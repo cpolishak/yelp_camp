@@ -1,17 +1,37 @@
-<% include partials/header.ejs %>
-
-<div class="container-fluid text-center">
-
-    <img src="https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022_960_720.jpg"
-        alt="mountain" style="width: 60vw;">
-
-    <div class="container text-center pt-3">
-        <header class="jumbotron">
-        <h1>Welcome to the Camping Searcher!</h1>
-        <a href="/campgrounds" style="font-size: 1.5em;"> View All Campgrounds</a>
-    </header>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Camping Searcher</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
     </div>
+    
+    <div id="landing-header">
+ 		<h1>Welcome to Camping Searcher!</h1>
+		<a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 
-</div>
-
-<% include partials/footer.ejs %>
+<% include partials/footer %>
