@@ -1,5 +1,5 @@
 var Campground = require("../models/campground");
-var Comments = require("../models/comment");
+var Comment = require("../models/comment");
 
 // All of the middleware goes here
 
@@ -8,7 +8,8 @@ var middlewareObj = {};
 middlewareObj.checkCampgroundOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
         Campground.findById(req.params.id, function (err, foundCampground) {
-            if (err) {
+            // The || !foundCampground addition below to the error prevents crashes of the server if someone alters the address to an invalid one (whether by subtraction, addition or alteration)
+            if (err || !foundCampground) {
                 req.flash("error", "Campground not found")
                 res.redirect("back");
             } else {
@@ -30,7 +31,8 @@ middlewareObj.checkCampgroundOwnership = function (req, res, next) {
 middlewareObj.checkCommentOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
         Comment.findById(req.params.comment_id, function (err, foundComment) {
-            if (err) {
+            if (err || !foundComment) {
+                req.flash("error", "Comment not found");
                 res.redirect("back");
             } else {
                 // does user own the comment?

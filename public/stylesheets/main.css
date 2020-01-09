@@ -17,3 +17,17 @@ body {
 .delete-form {
     display: inline;
 }
+
+.comments {
+    background-color: rgb(235, 233, 233);
+    border: 2px solid rgb(221, 221, 221)
+}
+
+.userCamps {
+    list-style: none;
+}
+
+.userImg {
+    max-width: 20vw;
+    max-height: 30vh;
+}

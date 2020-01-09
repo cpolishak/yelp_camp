@@ -4,8 +4,8 @@
     <div class="row">
         <h1 class="text-center mx-auto pb-3">Login</h1>
     </div>
-    <div class="row text-center">
-        <div class="col-6 mx-auto jumbotron bg-dark pb-3">
+    <div class="row text-center mx-2">
+        <div class="col-xs-10 col-md-8 col-lg-6 text-center mx-auto jumbotron bg-dark pb-3">
             <form action="/login" method="POST">
                 <div class="form-group ">
                     <input class="form-control" type="text" name="username" placeholder="username">
@@ -17,7 +17,10 @@
                     <button class="btn btn-lg btn-primary btn-block">Login</button>
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
+            <div class="text-center pb-2">
+                <a href="/forgot">Forgot OR want to change your password?</a>
+            </div>
+            <a href="/campgrounds" class="text-light">Go Back</a>
         </div>
     </div>
 </div>

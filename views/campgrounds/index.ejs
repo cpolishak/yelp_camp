@@ -3,26 +3,30 @@
 <div class="container">
     <header class="jumbotron">
         <div class="container text-center">
-            <h1 class="font-weight-bold">Welcome to the Camps Page</h1>
-            <p>You can view some of our handpicked mountains / campsites from all around the world to go see for yourself</p>
+            <h1 class="font-weight-bold">
+            Welcome to the Camps Page
+            </h1>
+            <p>This site is for people to document great spots from around the globe to camp and do outdoors-y stuff. Feel free to browse around at some of the spots others have added. You can join by <a href="/register">creating an account</a> and adding your own neat location to the site for others to check out.</p>
             <p>
-                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add A New Campground</a>
+                <a class="btn btn-primary btn-lg" href="/campgrounds/new"> 
+                    <i class="fa fa-plus"></i>
+                     Add A New Campground</a>
             </p>
+            <p><small>NOTE: Please don't be a jerk and try to break things or be rude. Please only add real places and let's keep things appropriate. This site is intended to share information, not to cater to trolls or spammers. So don't be a jerk, we do not like jerks!</small></p>
         </div>
     </header>
 
-    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="row text-center">
         <% campgrounds.forEach(function(campground){ %>
-            <div class="col-md-3 col-sm-6">
-                <div class="img-thumbnail">
-                    <img src="<%= campground.image %>" alt="" class="img-thumbnail">
-                    <div class="caption">
-                        <h4><%= campground.name %></h4>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                    <img src="<%= campground.image %>" class="card-img-top" alt="<%= campground.name %>">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= campground.name %></h5>
+                      <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
                     </div>
-                    <p>
-                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
-                    </p>
-                </div>
+                  </div>
+
             </div>
         <% }); %>
     </div>

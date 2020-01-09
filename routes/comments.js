@@ -49,16 +49,21 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
  // COMMENT EDIT ROUTE
  router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res ) {
-     //  we have to make sure to access the campground_id to avoid 1 error. 
-     // And we have to 
-     Comment.findById(req.params.comment_id, function(err, foundComment) {
-         if(err) {
-             res.redirect("back");
-         } else {
-            // campground_id corresponds with the same named ejs in our edit.ejs (for comments) in the action path defined in the form on that page
-             res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
-         }
-     });
+    Campground.findById(req.params.id, function(err, foundCampground) {
+        if(err || !foundCampground) {
+            req.flash("error", "Campground not found");
+            return res.redirect("back");
+        }
+        //  we have to make sure to access the campground_id to avoid 1 error. 
+        Comment.findById(req.params.comment_id, function(err, foundComment) {
+            if(err) {
+                res.redirect("back");
+            } else {
+               // campground_id corresponds with the same named ejs in our edit.ejs (for comments) in the action path defined in the form on that page
+                res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+            }
+        });
+    });
  });
 
 // COMMENTS UPDATE

@@ -3,23 +3,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-2">
-            <p class="lead">Camping Searcher</p>
-            <div class="list-group">
-                <div class="list-group-item active">Info 1</div>
-                <div class="list-group-item">Info 2</div>
-                <div class="list-group-item">Info 3</div>
-            </div>
-        </div>
-        <div class="col-md-8 mb-4">
+        <div class="col-md-10 mb-4">
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= campground.image %>" alt="">
-                <div class="caption-full">
-                    
+                <div class="caption-full pb-4">
                     <h4 class="float-right">$<%= campground.price %>/night</h4>
                     <h4><a href="#"><%= campground.name %></a></h4>
-                    <p><%= campground.description %></p>
-                    <p><em>Submitted by <%= campground.author.username %></em></p>
+                    <hr>
+                    <p class="pt-4"><%= campground.description %></p>
+                    <p><em>Submitted by: <a href="/users/<%= campground.author.id %>"> <%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
                     <a class="btn btn-secondary" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
                     <form class="delete-form" action="/campgrounds/<%=campground.id %>?_method=DELETE" method="POST">
@@ -28,8 +20,9 @@
                     <% } %>
                 </div>
             </div>
-            <hr>
-            <div class="well">
+
+            <div class="well comments p-3">
+                <div class="float-left">Comments</div>
                 <div class="text-right">
                     <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add new comment</a>
                 </div>
@@ -38,33 +31,29 @@
                     <div class="row">
                         <div class="col-md-12">
                             <strong><%= comment.author.username %></strong>
-                            <span class="float-right">5 days ago</span>
+                            <span class="float-right"><%= moment(comment.createdAt).fromNow() %></span>
                             <p>
                                 <%= comment.text %>
                             </p>
                             <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
-                            <a class="btn btn-xs btn-warning" 
-                                href="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>/edit">Edit
-                            </a>
-                            <form class="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-xs btn-danger " value="Delete">
-                            </form>
+                            <div class="float-right pb-4">
+                                <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>/edit">Edit
+                                </a>
+                                <form class="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                </form>
+                            </div>
                             <% } %>
+                            <hr>
                         </div>
                     </div>
-                    
                 <% }) %>
             </div>
         </div>
         <div class="col-md-1"></div>
     </div>
 </div>
-
-
-
-
-
-
 
 
 

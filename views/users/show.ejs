@@ -1,0 +1,32 @@
+<% include ../partials/header.ejs %>
+
+<div class="container pt-4">
+    <div class="row bg-dark text-light text-center jumbotron mx-2">
+        <div class="col-md-6 mx-auto pb-3">
+            <h1><%= user.username %></h1>
+            <img class="userImg" src="<%= user.avatar %>" alt="user profile img">
+        </div>
+        <div class="col-md-6">
+            <p>About:</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis magnam dicta inventore recusandae nam fugit quisquam fuga, cupiditate voluptas sint! Fuga, qui repellendus. Reprehenderit incidunt eaque aliquid, quasi consectetur atque.</p>
+        </div>
+    </div>
+    <div class="row text-center mx-2">
+        <div class="col-md-8 mb-4 p-4 bg-primary">
+            <h4><%= user.username %>'s campgrounds: </h4>
+            <ul>
+            <% campgrounds.forEach(function(campground) {  %>
+                <li class="userCamps">
+                    <a href="/campgrounds/<%= campground.id %>" class="text-light"><%= campground.name %></a>
+                </li>
+            <% }); %>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-primary float-left mb-4" href="/campgrounds">Go Back</a>
+        </div>
+    </div>  
+
+</div>
+
+<% include ../partials/footer.ejs %>

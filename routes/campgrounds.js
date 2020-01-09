@@ -56,12 +56,14 @@ router.get('/new', middleware.isLoggedIn, function(req, res){
 });
 
 //This below needs to go after the campgrounds/new route, because the :id can be anything (even the word new, which would cause issues because it would treat the campgrounds/new as a /:id route.)
-// SHOW Route - shows more info about one campground
+// SHOW - Route - shows more info about one campground
 router.get('/:id', function(req, res){
     // Find the campground with provided ID. Then populating comments and then executing the function for error or to show the campgrounds found.
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
-        if(err) {
+        if(err || !foundCampground) {
             console.log(err);
+            req.flash("error", "Campground not found");
+            res.redirect("/campgrounds");
         } else {
             console.log(foundCampground)
             // render the show template with that campground

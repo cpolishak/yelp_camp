@@ -11,7 +11,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var Campground = require('./models/campground');
 var Comment = require('./models/comment');
-var User = require("./models/user")
+var User = require("./models/user");
 var seedDB = require('./seeds.js');
 
 // Requiring routes for router vars in other js pages
@@ -31,6 +31,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
+app.locals.moment = require('moment');
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
