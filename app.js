@@ -24,7 +24,7 @@ var commentRoutes = require("./routes/comments"),
 
 // console.log(process.env.devdbURL);
 // mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(process.env.MONGODB_URL);
 
 
 app.use(bodyParser.urlencoded({extended:true}));
