@@ -5,22 +5,19 @@
         <div class="col-xs-10 col-md-8 col-lg-6 text-center">
             <h1>Edit <%= campground.name %></h1>
                 <div>
-                    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+                    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="number" name="campground[price]" value="<%= campground.price %>" min="0.01" step="0.01">
+                            <label for="image">Image</label>
+                            <!-- the accept="image" below means that it won't allow anything but image files to be uploaded -->
+                            <input type="file" id="image" name="image" accept="image/*">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>">
-                        </div>
-                        <p>** Note ** Please use url address for images from <a href="https://pixabay.com/images/search/" target="_blank">Pixabay</a>. Then search camp or
-                            camping. Finally, right click the chosen image and select "copy link address".</p>
                         <div class="form-group">
                             <input class="form-control" type="text" name="campground[description]" value="<%= campground.description %>">
                         </div>
-                        <button class="btn btn-primary btn-block">Submit</button>
+                        <button class="btn btn-primary btn-block">Update!</button>
                     </form>
                 </div>
             <a href="/campgrounds">Go Back</a>

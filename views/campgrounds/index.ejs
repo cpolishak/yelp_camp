@@ -1,10 +1,10 @@
 <% include ../partials/header.ejs %>
 
 <div class="container">
-    <header class="jumbotron">
+    <header class="jumbotron indexbg">
         <div class="container text-center">
             <h1 class="font-weight-bold">
-            Welcome to the Camps Page
+            Welcome to the Camping Searcher
             </h1>
             <p>This site is for people to document great spots from around the globe to camp and do outdoors-y stuff. Feel free to browse around at some of the spots others have added. You can join by <a href="/register">creating an account</a> and adding your own neat location to the site for others to check out.</p>
             <p>
@@ -12,7 +12,25 @@
                     <i class="fa fa-plus"></i>
                      Add A New Campground</a>
             </p>
-            <p><small>NOTE: Please don't be a jerk and try to break things or be rude. Please only add real places and let's keep things appropriate. This site is intended to share information, not to cater to trolls or spammers. So don't be a jerk, we do not like jerks!</small></p>
+            <p><small>NOTE: Please don't be a jerk and try to break things or be rude. Please only add real places and let's keep things appropriate. This site is intended to share information, not to cater to trolls or spammers. So don't be a jerk, we do not like jerks!</small>
+            </p>
+            <!-- Fuzzy Search -->
+            <div class="row pb-1">
+                <p>
+                <form action="/campgrounds" method="GET" class="form-inline mx-auto">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Campground Search..." class="form-control">
+                        <input type="submit" value="Search" class="btn btn-primary">
+                    </div>
+                </form>
+                </p>
+            </div>
+            <p>
+                <% if(noMatch !== null) { %>
+                    <h4><%= noMatch %></h4>
+                    <% } %>
+            </p>
+            <p><small>**Click search while blank to return all campgrounds**</small></p>
         </div>
     </header>
 

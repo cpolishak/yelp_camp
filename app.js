@@ -13,6 +13,7 @@ var Campground = require('./models/campground');
 var Comment = require('./models/comment');
 var User = require("./models/user");
 var seedDB = require('./seeds.js');
+require("dotenv").config();
 
 // Requiring routes for router vars in other js pages
 var commentRoutes = require("./routes/comments"),
@@ -21,7 +22,8 @@ var commentRoutes = require("./routes/comments"),
 
 // seedDB();  // seed the Database
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 // Also need the ^^^ app.use(bodyParser.urlencoded({extended:true})); any time we use body-parser. 
@@ -68,7 +70,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 // use process.env.PORT || 3000 so that anyone can get on that route to access data (not just me on this machine)
 app.listen(process.env.PORT || 3000, function() {
-    console.log('YelpCamp has Started')
+    console.log('Camping Searcher has Started')
 });
 
 

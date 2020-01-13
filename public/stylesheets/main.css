@@ -31,3 +31,18 @@ body {
     max-width: 20vw;
     max-height: 30vh;
 }
+
+.indexbg {
+    background-image: url("https://images.unsplash.com/photo-1469778684305-aef500ca6f7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-repeat: cover;
+}
+
+.loginbg {
+    background-image: url("https://images.unsplash.com/photo-1433888376991-1297486ba3f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-repeat: cover;
+}
+
+.signupbg {
+    background-image: url("https://images.unsplash.com/photo-1467745484408-7b06bd4c1b88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-repeat: cover;
+}

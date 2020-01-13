@@ -8,8 +8,6 @@ var nodemailer = require("nodemailer");
 var crypto = require("crypto");
 require("dotenv").config();
 
-console.log(process.env.gmail);
-
 // creates a GET route route for the home/root page (in this case localhost:3000).
 router.get('/', function(req, res){
     res.render('landing.ejs')
