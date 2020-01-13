@@ -22,9 +22,10 @@ var commentRoutes = require("./routes/comments"),
 
 // seedDB();  // seed the Database
 
+// console.log(process.env.devdbURL);
 // mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-mongoose.connect("process.env.MONGODB_URL", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-// "mongodb+srv://process.env.mongoName:process.env.mongoPass@campingsearcher-zitpj.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 // Also need the ^^^ app.use(bodyParser.urlencoded({extended:true})); any time we use body-parser. 
