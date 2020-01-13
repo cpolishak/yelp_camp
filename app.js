@@ -13,7 +13,7 @@ var Campground = require('./models/campground');
 var Comment = require('./models/comment');
 var User = require("./models/user");
 var seedDB = require('./seeds.js');
-require("dotenv").config();
+require("dotenv").config({path: ".env"});
 
 // Requiring routes for router vars in other js pages
 var commentRoutes = require("./routes/comments"),
@@ -24,7 +24,8 @@ var commentRoutes = require("./routes/comments"),
 
 // console.log(process.env.devdbURL);
 // mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-mongoose.connect(process.env.MONGODB_URL);
+// mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect("mongodb+srv://Cpolish:uyw9Rgp1nVW5eGhw@campingsearcher-zitpj.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 
 app.use(bodyParser.urlencoded({extended:true}));
