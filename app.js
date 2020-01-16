@@ -29,7 +29,7 @@ var commentRoutes = require("./routes/comments"),
 
 // ***** CONNECTION FOR PRODUCTION MONGO DB *****
 console.log(process.env.MONGODBURL);
-mongoose.connect("mongodb+srv://Cpolish:uyw9Rgp1nVW5eGhw@campingsearcher-zitpj.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected...'))
     .catch((err) => console.log(err));   
 // const MongoClient = require('mongodb').MongoClient;
