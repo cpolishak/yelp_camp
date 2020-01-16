@@ -76,8 +76,9 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // use process.env.PORT || 3000 so that anyone can get on that route to access data (not just me on this machine)
-app.listen(process.env.PORT || 3000, function() {
-    console.log('Camping Searcher has Started')
+var port = process.env.PORT || 3000;
+app.listen(port || process.env.PORT, process.env.IP, function(){
+    console.log("App server is running!");
 });
 
 
