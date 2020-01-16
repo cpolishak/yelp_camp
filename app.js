@@ -24,22 +24,12 @@ var commentRoutes = require("./routes/comments"),
 
 // ***** CONNECTION FOR DEV MONGO DB *****
 // console.log(process.env.devdbURL);
-// mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-// mongoose.connect(process.env.MONGODB_URL);
+// mongoose.connect(process.env.devdbURL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 // ***** CONNECTION FOR PRODUCTION MONGO DB *****
-console.log(process.env.MONGODBURL);
-mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => console.log('MongoDB Connected...'))
     .catch((err) => console.log(err));   
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://Cpolish:uyw9Rgp1nVW5eGhw@campingsearcher-zitpj.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
 
 
 app.use(bodyParser.urlencoded({extended:true}));

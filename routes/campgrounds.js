@@ -73,6 +73,7 @@ router.post("/", middleware.isLoggedIn, upload.single("image"), function(req, re
       }
       Campground.create(req.body.campground, function(err, campground) {
         if (err) {
+          console.log(err);
           req.flash('error', err.message);
           return res.redirect('back');
         }
